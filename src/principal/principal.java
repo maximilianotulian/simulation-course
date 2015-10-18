@@ -92,32 +92,3 @@ tenemos i= 1 hasta 2 sum(tc/ts) / n
 
 largar todos los valores en una fila separados por coma y que empieze con llave
 */
- //generar clases para histograma
-       /* double vector[] = {0, 0, 0, 0, 0};
-        double min = 10000; 
-        double max = 0;
-        for (int i = 0; i < modelo.getDemora().size(); i++) {
-            if (modelo.getDemora().get(i) > max) {
-                max = modelo.getDemora().get(i);
-            }
-            if (modelo.getDemora().get(i) < min) {
-                min = modelo.getDemora().get(i);
-            }
-        }
-        double incrementos = (max - min) / 5;
-        double[] intervalos = new double[5];
-        intervalos[0] = incrementos;
-        for (int i = 1; i < intervalos.length; i++) {
-            intervalos[i] = intervalos[i-1] + incrementos;
-        }
-        for (int i = 0; i < modelo.getDemora().size(); i++) {
-            for (int j = 0; j < intervalos.length; j++) {
-                if (modelo.getDemora().get(i) < intervalos[j]) {
-                    vector[j] = vector[j]+1;
-                } 
-            }
-        }
-        for (int i = 0; i < vector.length; i++) {
-            System.out.println(vector[i]);
-            
-        }*/
