@@ -19,11 +19,12 @@ public static double[] funcion(Espera e){
     double[] aux = new double[3];
     
     double q = e.getAreaBajoQ() / e.getT();
-    System.out.println("Número medio en cola: " + Libreria.darFormato(q, 3) +" areaBajoQ: "+Libreria.darFormato(e.getAreaBajoQ(), 3));//+"Tiempo final: "+e.getT()
+    //System.out.println("Número medio en cola: " + Libreria.darFormato(q, 3) +" areaBajoQ: "+Libreria.darFormato(e.getAreaBajoQ(), 3));//+"Tiempo final: "+e.getT()
     double b = e.getAreaBajoB() / e.getT();
-    System.out.println("Utilización del servidor: " + Libreria.darFormato(b, 3) + " areaBajoB: "+ Libreria.darFormato(e.getAreaBajoB(),3) + " Tiempo final: " + Libreria.darFormato(e.getT(),3));//
+    //System.out.println("Utilización del servidor: " + Libreria.darFormato(b, 3) + " areaBajoB: "+ Libreria.darFormato(e.getAreaBajoB(),3) + " Tiempo final: " + Libreria.darFormato(e.getT(),3));//
     double d = e.getDemoraTotal() / e.getCli_at();
-    System.out.println("Demora promedio: " + Libreria.darFormato(d, 3) + " Demora Total: " + Libreria.darFormato(e.getDemoraTotal(),3)+ " Clientes atendidos: "+ e.getCli_at());//
+    //System.out.println("Demora promedio: " + Libreria.darFormato(d, 3) + " Demora Total: " + Libreria.darFormato(e.getDemoraTotal(),3)+ " Clientes atendidos: "+ e.getCli_at());//
+    
     
     aux[0] = q; //número medio en cola
     aux[1] = b; //utilización del servidor
