@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class principal {
     public static void main(String[] args) {
-        ArrayList<double[]> mediasTotal = new ArrayList<>();
+        ArrayList<double[]> parametros = new ArrayList<>(); // 0 numero medio en cola, utilización del servidor, demora promedio
         ArrayList<Double> mediaServicio;  //utilización de servidor aux[1]
         ArrayList<Double> mediaDemora; // demora promedio aux[2]
         ArrayList<Double> mediaCola; // numero medio en cola aux[0]
@@ -70,18 +70,22 @@ public class principal {
                 medias[1] += mediaServicio.get(i); //utilización del servidor
                 medias[2] += mediaDemora.get(i); //demora promedio
             }
-
+            
+            medias[0] = medias[0] / replicas;
+            medias[1] = medias[1] / replicas;
+            medias[2] = medias[2] / replicas;
+            
             muestra(replicas,medias[0],medias[1],medias[2]);
-            mediasTotal.add(medias);
+            parametros.add(medias);
         }
     }
     
     public static void muestra (int replicas, double media0, double media1, double media2) {
         
         System.out.print("--------Media de las "+replicas+" réplicas-------\n");  
-        System.out.println("número medio en cola " + Libreria.darFormato(media0 / replicas, 5));
-        System.out.println("utilización del servidor " + Libreria.darFormato(media1 / replicas, 5));
-        System.out.println("demora promedio " + Libreria.darFormato(media2 / replicas, 5));
+        System.out.println("número medio en cola " + Libreria.darFormato(media0, 5));
+        System.out.println("utilización del servidor " + Libreria.darFormato(media1, 5));
+        System.out.println("demora promedio " + Libreria.darFormato(media2, 5));
     }
     
 }
