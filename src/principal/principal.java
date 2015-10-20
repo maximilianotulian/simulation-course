@@ -78,6 +78,27 @@ public class principal {
             muestra(replicas,medias[0],medias[1],medias[2]);
             parametros.add(medias);
         }
+        String mediaFirst = "{";
+        String mediaSecond = "{";
+        String mediaThird = "{";
+        for (int i = 0; i < parametros.size(); i += 1) {
+            if(( i + 1) == parametros.size()){
+                mediaFirst += parametros.get(i)[0];
+                mediaSecond += parametros.get(i)[1];
+                mediaThird += parametros.get(i)[2];
+            } else {
+                mediaFirst += parametros.get(i)[0] + " ,";
+                mediaSecond += parametros.get(i)[1] + " ,";
+                mediaThird += parametros.get(i)[2] + " ,";
+            }
+            
+        }
+        mediaFirst += " }";
+        mediaSecond += " }";
+        mediaThird += " }";
+        System.out.println("número medio en cola " + mediaFirst);
+        System.out.println("utilización del servidor " + mediaSecond);
+        System.out.println("demora promedio " + mediaThird);
     }
     
     public static void muestra (int replicas, double media0, double media1, double media2) {
