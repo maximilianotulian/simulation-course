@@ -48,8 +48,38 @@ public class principal {
         */
         int inicia = 500; 
         int aumenta = 500; 
-        int cantReplicas = 10000;
+        int cantReplicas = 10000;  
         
+        /* inicio primera replica*/
+             Espera modelo = new Espera();
+
+            Inicializacion.Inicia(modelo, 500);
+            char aux = Tiempos.busca(modelo);
+            while (modelo.getReloj() <= modelo.getTFS()) {  
+                if (aux  != 'z') {
+                    switch(aux){
+                        case 'A': {Arribo.funcion(modelo);}
+                            //System.out.println("Arribo: "+ modelo.getReloj());
+                            break;
+                        case 'P': {Partida.funcion(modelo);}
+                           // System.out.println("Partida: " + modelo.getReloj());
+                            break;
+                        default: break;
+                    }
+                }
+                else{
+                    System.out.println("Error");
+                }
+            modelo.setT(modelo.getReloj());
+            aux = Tiempos.busca(modelo);
+            }
+            //agregamos las medias de la réplica
+            auxMedia = Reporte.funcion(modelo);
+            muestra(1,auxMedia[0],auxMedia[1],auxMedia[2]);
+            parametros.add(auxMedia);
+        /* fin primera replica*/
+        
+        /* comienza bucle de replicas */
         for  (int replicas = inicia; replicas <= cantReplicas; replicas += aumenta) {
             mediaServicio = new ArrayList<>();
             mediaDemora = new ArrayList<>();
@@ -58,7 +88,7 @@ public class principal {
             medias = new double[3];
             
             for (int i = 0; i <= replicas; i++) { 
-            Espera modelo = new Espera();
+            modelo = new Espera();
 
             //El primer argumento es el modelo y el segundo el tiempo final de simulación
             //Para este caso práctico lo setie en 10
@@ -67,7 +97,7 @@ public class principal {
                 //System.out.print("replica: " + (i+1) +"\n");
 
             Inicializacion.Inicia(modelo, 500);
-            char aux = Tiempos.busca(modelo);
+            aux = Tiempos.busca(modelo);
             while (modelo.getReloj() <= modelo.getTFS()) {  
                 if (aux  != 'z') {
                     switch(aux){
@@ -123,9 +153,14 @@ public class principal {
             }
             
         }
+        /* fin bucle de replicas*/
+        
         mediaFirst += " }";
         mediaSecond += " }";
         mediaThird += " }";
+        
+        /* Datos para gráficar con programa externo */
+        System.out.println("--------Datos para graficar--------");
         System.out.println("número medio en cola " + mediaFirst);
         System.out.println("utilización del servidor " + mediaSecond);
         System.out.println("demora promedio " + mediaThird);
