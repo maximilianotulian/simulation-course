@@ -136,8 +136,9 @@ public class principal {
             muestra(replicas,medias[0],medias[1],medias[2]);
             parametros.add(medias);
         }
+        /* fin bucle de replicas */
         
-        
+        /* inicio generación de string para gráficar con programa externo */
         String mediaFirst = "{";
         String mediaSecond = "{";
         String mediaThird = "{";
@@ -153,13 +154,13 @@ public class principal {
             }
             
         }
-        /* fin bucle de replicas*/
         
         mediaFirst += " }";
         mediaSecond += " }";
         mediaThird += " }";
+        /* Fin generación de string para gráficar con programa externo */
         
-        /* Datos para gráficar con programa externo */
+        /* Mostrar string para gráficar con programa externo */
         System.out.println("--------Datos para graficar--------");
         System.out.println("número medio en cola " + mediaFirst);
         System.out.println("utilización del servidor " + mediaSecond);
