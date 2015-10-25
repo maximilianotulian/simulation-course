@@ -6,7 +6,6 @@
 package principal;
 import espera.*;
 import generadores.Libreria;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 /**
  *
@@ -14,15 +13,44 @@ import java.util.ArrayList;
  */
 public class principal {
     public static void main(String[] args) {
-        ArrayList<double[]> parametros = new ArrayList<>(); // 0 numero medio en cola, utilización del servidor, demora promedio
+        
+        /* 
+        * Esta variable va a guardar los parametros de cada una de las réplicas
+        * Para luego ser gráficadas por un programa externo 
+        * 0 número medio en cola, utilización del servidor, demora promedio 
+        */
+        
+        ArrayList<double[]> parametros = new ArrayList<>(); 
+        
+        double[] auxMedia;//recibe las medias de los parametros desde el reporte
+        
+        /*
+        * mediaCola, mediaServicio y mediaDemora guarda la media de cada una de las replicas.
+        * Es decir si tengo 100 observaciones, vamos a tener 100 valores dentro de cada una de las variables mencionadas. 
+        */
+        
+        ArrayList<Double> mediaCola; // numero medio en cola aux[0]
         ArrayList<Double> mediaServicio;  //utilización de servidor aux[1]
         ArrayList<Double> mediaDemora; // demora promedio aux[2]
-        ArrayList<Double> mediaCola; // numero medio en cola aux[0]
-        double[] auxMedia;//recibe las medias de los parametros desde el reporte
-        double[] medias;  //acumula las medias de todas las réplicas
         
-        // hacer un for con mil para hacer 1000 réplicas automaticamente
-        for  (int replicas = 100; replicas <= 1000; replicas += 100) {
+        /* 
+        * acumula las medias de todas las réplicas para luego dividirlas por el total de replicas y calcular la media de la media.
+        * la media de la media se guarda en la variable parámetros que luego se utilizará para gráficar.
+        * el subindice 0 corresponde a la media en cola,
+        * el subindice 1 corresponde a media de la utilización de servicio
+        * el subindice 2 corresponde a la demora promedio
+        */
+        
+        double[] medias;  
+        
+        /*
+        * inicia, aumenta y cantReplicas se utilizan para manejar el bucle for de las réplicas
+        */
+        int inicia = 500; 
+        int aumenta = 500; 
+        int cantReplicas = 10000;
+        
+        for  (int replicas = inicia; replicas <= cantReplicas; replicas += aumenta) {
             mediaServicio = new ArrayList<>();
             mediaDemora = new ArrayList<>();
             mediaCola = new ArrayList<>();
@@ -78,6 +106,8 @@ public class principal {
             muestra(replicas,medias[0],medias[1],medias[2]);
             parametros.add(medias);
         }
+        
+        
         String mediaFirst = "{";
         String mediaSecond = "{";
         String mediaThird = "{";
