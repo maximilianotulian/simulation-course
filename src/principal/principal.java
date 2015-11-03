@@ -51,7 +51,7 @@ public class principal {
         int cantReplicas = 10000;  
         
         /* inicio primera replica*/
-             Espera modelo = new Espera();
+            Espera modelo = new Espera();
 
             Inicializacion.Inicia(modelo, 500);
             char aux = Tiempos.busca(modelo);
