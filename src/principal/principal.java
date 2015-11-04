@@ -18,9 +18,10 @@ public class principal {
         /* inicio primera replica*/
             Espera modelo = new Espera();
 
-            Inicializacion.Inicia(modelo, 500);
+            Inicializacion.Inicia(modelo, 1200);
             char aux = Tiempos.busca(modelo);
             while (modelo.getReloj() <= modelo.getTFS()) {  
+                System.out.println(modelo.getReloj());
                 if (aux  != 'z') {
                     switch(aux){
                         case 'A': {Arribo.funcion(modelo);}
