@@ -1,4 +1,4 @@
-# simulation-course
+# Simulation
 Simulation of discrete events course
 
 TP1 - Ruleta
