@@ -1,20 +1,21 @@
-# Simulation
-Simulation of discrete events course
+# Simulación - 4° año de ingenieria en sistemas UTN
 
-TP1 - Ruleta
-- informe
-- código
+Simulación de eventos discretos
 
-TP2 - Distribución exponencial
-- código
+** TP1 - Ruleta **
+* informe
+* código
 
-TP3 - Campo
-- informe
-- muestra
+** TP2 - Distribución exponencial **
+* código
 
-TP4 - Regularidad
-- informe
-- gráficas
-- resultados de las replicas
-- pseudo código en pdf
-- código 
+** TP3 - Campo **
+* informe
+* muestra
+
+** TP4 - Regularidad **
+* informe
+* gráficas
+* resultados de las replicas
+* pseudo código en pdf
+* código 
