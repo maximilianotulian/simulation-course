@@ -40,8 +40,12 @@ public static double[] funcion(Espera e){
     muestraSeparador();
     System.out.println("           Valores para graficar");
     
-    graficar(e,0);
-    graficar(e,1);
+    /*modelo, parametro, booleano para la media, booleano para la varianza
+    parametro 0 demora media en sistema
+    parametro 1 demora media en cola
+    */
+    graficar(e,0,false);
+    graficar(e,1,false);
     
     muestraSeparador();
 
@@ -55,7 +59,7 @@ public static void muestra (double media0, double media1, double media2){
 public static void muestraSeparador() {
     System.out.println("------------------------------------------");
 }
-public static void graficar(Espera e, int tipo) {
+public static void graficar(Espera e, int tipo, boolean v) {
     String auxMedia = "";
     String auxVarianza = "";
     ArrayList parametro = new ArrayList<Double>();
@@ -74,6 +78,9 @@ public static void graficar(Espera e, int tipo) {
                 mediaVar = e.getMediaPartida();
             break;
         case 2: auxMedia += "Utilización esperada del servidor \n {";
+                auxVarianza += "Varianza de la utilización del servidor \n {";
+                parametro = e.getDemora();
+                mediaVar = e.getMediaArribo();
             break;
     }
     for(int i = 0; i < parametro.size(); i += 1){
@@ -99,7 +106,12 @@ public static void graficar(Espera e, int tipo) {
     auxMedia += "}";
     auxVarianza += "}";
     
-    System.out.println(auxMedia + "\n" + auxVarianza);
+    if(v) {
+        System.out.println(auxMedia + "\n" + auxVarianza);
+    } else {
+        System.out.println(auxMedia);
+    }
+    
 }
 public static void tiempoEA(Espera e){
     ArrayList<Vta> aux = e.getVTA();

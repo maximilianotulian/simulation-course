@@ -22,7 +22,7 @@ public class principal {
         la media de partida
         */
         
-        Inicializacion.Inicia(modelo, 1000, 0.5, 0.25);
+        Inicializacion.Inicia(modelo, 10000, 0.5, 0.25);
         char aux = Tiempos.busca(modelo);
         while (modelo.getReloj() < modelo.getTFS()) {  
             if (aux  != 'z') {
