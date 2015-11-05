@@ -39,20 +39,67 @@ public static double[] funcion(Espera e){
     muestra(q,b,d);
     muestraSeparador();
     System.out.println("           Valores para graficar");
-    graficarDemora(e.getDemoraSis(),0);
-    graficarDemora(e.getDemora(),1);
+    
+    graficar(e,0);
+    graficar(e,1);
+    
     muestraSeparador();
 
     return aux;
 }
-public static void muestraSeparador() {
-    System.out.println("------------------------------------------");
-}
 public static void muestra (double media0, double media1, double media2){
-    
     System.out.println("Número medio en cola: " + Libreria.darFormato(media0, 5));
     System.out.println("Utilización del servidor: " + Libreria.darFormato(media1, 5));
     System.out.println("Demora promedio: " + Libreria.darFormato(media2, 5));
+}
+public static void muestraSeparador() {
+    System.out.println("------------------------------------------");
+}
+public static void graficar(Espera e, int tipo) {
+    String auxMedia = "";
+    String auxVarianza = "";
+    ArrayList parametro = new ArrayList<Double>();
+    double media = 0;
+    double mediaVar = 0;
+    
+    switch(tipo){
+        case 0: auxMedia += "Demora media en sistema \n {";
+                auxVarianza += "Varianza de la demora en sistema \n {";
+                parametro = e.getDemoraSis();
+                mediaVar = e.getMediaArribo();
+            break;
+        case 1: auxMedia += "Demora media en cola \n {";
+                auxVarianza += "Varianza de la demora cola \n {";
+                parametro = e.getDemora();
+                mediaVar = e.getMediaPartida();
+            break;
+        case 2: auxMedia += "Utilización esperada del servidor \n {";
+            break;
+    }
+    for(int i = 0; i < parametro.size(); i += 1){
+        if(i%500 == 0 && i != 0){
+            auxMedia += "\n";
+            auxVarianza += "\n";
+        }
+        
+        media += (double) parametro.get(i);
+        if(i != 0){
+            auxMedia += Libreria.darFormato(media/i, 4);
+            auxVarianza += Libreria.darFormato(Math.pow((media/i) - mediaVar,2), 4);
+            if(i + 1 != parametro.size()){
+                auxMedia += ", ";
+                auxVarianza += ", ";
+            }
+        }
+        else {
+            auxMedia += Libreria.darFormato(media, 4) + ", ";
+            auxVarianza += Libreria.darFormato(media, 4) + ", ";
+        }
+    }
+    auxMedia += "}";
+    auxVarianza += "}";
+    
+    System.out.println(auxMedia + "\n" + auxVarianza);
 }
 public static void tiempoEA(Espera e){
     ArrayList<Vta> aux = e.getVTA();
@@ -63,24 +110,5 @@ public static void tiempoEA(Espera e){
         tiempos.add(help);
     }
 }
-public static void graficarDemora(ArrayList demora, int typo) {
-    String aux = "";
-    
-    switch(typo){
-        case 0: aux += "Demora en sistema \n {";
-            break;
-        case 1: aux += "Demora en cola \n {";
-            break;
-    }
-    for(int i = 0; i < demora.size(); i += 1){
-        if(i%500 == 0 && i != 0){
-            aux += "\n";
-        }
-        
-        aux += Libreria.darFormato((double) demora.get(i),2) + ", ";
-    }
-    aux += "}";
-    
-    System.out.println(aux);
-}
+
 }
