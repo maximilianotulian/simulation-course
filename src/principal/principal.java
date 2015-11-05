@@ -14,8 +14,15 @@ public class principal {
     public static void main(String[] args) {
  
         Espera modelo = new Espera();
-
-        Inicializacion.Inicia(modelo, 1000);
+        
+        /*
+        Inicia recibe como parametros el modelo creado, 
+        el tiempo final de simulación,
+        la media de arribo
+        la media de partida
+        */
+        
+        Inicializacion.Inicia(modelo, 1000, 0.5, 0.25);
         char aux = Tiempos.busca(modelo);
         while (modelo.getReloj() < modelo.getTFS()) {  
             if (aux  != 'z') {

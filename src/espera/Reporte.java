@@ -29,14 +29,24 @@ public static double[] funcion(Espera e){
     aux[1] = b; //utilización del servidor
     aux[2] = d; //demora promedio
     
-    System.out.println("Parametros utilizados");
-    System.out.println("Media utilizada para el arribo: " + e.getMediaArribo());
-    System.out.println("Media utilizada para el partida: " + e.getMediaPartida());
+    muestraSeparador();
+    System.out.println("           Parametros utilizados");
+    System.out.println("Media arribo: " + e.getMediaArribo());
+    System.out.println("Media partida: " + e.getMediaPartida());
     System.out.println("Tiempo final de simulación: " + e.getTFS());
-    System.out.println("------------------------------------------");
-    System.out.println("Medidas de rendimiento");
+    muestraSeparador();
+    System.out.println("           Medidas de rendimiento");
     muestra(q,b,d);
+    muestraSeparador();
+    System.out.println("           Valores para graficar");
+    graficarDemora(e.getDemoraSis(),0);
+    graficarDemora(e.getDemora(),1);
+    muestraSeparador();
+
     return aux;
+}
+public static void muestraSeparador() {
+    System.out.println("------------------------------------------");
 }
 public static void muestra (double media0, double media1, double media2){
     
@@ -52,5 +62,25 @@ public static void tiempoEA(Espera e){
         double help = aux.get(i).hora - aux.get(i-1).hora;
         tiempos.add(help);
     }
+}
+public static void graficarDemora(ArrayList demora, int typo) {
+    String aux = "";
+    
+    switch(typo){
+        case 0: aux += "Demora en sistema \n {";
+            break;
+        case 1: aux += "Demora en cola \n {";
+            break;
+    }
+    for(int i = 0; i < demora.size(); i += 1){
+        if(i%500 == 0 && i != 0){
+            aux += "\n";
+        }
+        
+        aux += Libreria.darFormato((double) demora.get(i),2) + ", ";
+    }
+    aux += "}";
+    
+    System.out.println(aux);
 }
 }
