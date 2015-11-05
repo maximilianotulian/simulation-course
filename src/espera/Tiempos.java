@@ -12,7 +12,7 @@ public static char busca(Espera modelo){
     char evento = 'z';
     ArrayList<Espera.Lev> jeje = modelo.getLEV();
     int indice = 0;
-    double hora = modelo.getTFS() + 1;
+    double hora = modelo.getTFS() + 100;
     
     for (int i = 0; i < jeje.size(); i++) {
         if (jeje.get(i).usado && jeje.get(i).hora < hora && modelo.getReloj() < jeje.get(i).hora) { 

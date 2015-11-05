@@ -25,16 +25,24 @@ public static double[] funcion(Espera e){
     double d = e.getDemoraTotal() / e.getCli_at();
     //System.out.println("Demora promedio: " + Libreria.darFormato(d, 3) + " Demora Total: " + Libreria.darFormato(e.getDemoraTotal(),3)+ " Clientes atendidos: "+ e.getCli_at());//
     
-    
     aux[0] = q; //número medio en cola
     aux[1] = b; //utilización del servidor
     aux[2] = d; //demora promedio
     
-    /*for (int i = 0; i < e.getDemora().size(); i++) {
-        System.out.println("Demora individual: "+ e.getDemora().get(i));
-        System.out.println("Demora en sistema: "+ e.getDemoraSis().get(i)); 
-    }*/
+    System.out.println("Parametros utilizados");
+    System.out.println("Media utilizada para el arribo: " + e.getMediaArribo());
+    System.out.println("Media utilizada para el partida: " + e.getMediaPartida());
+    System.out.println("Tiempo final de simulación: " + e.getTFS());
+    System.out.println("------------------------------------------");
+    System.out.println("Medidas de rendimiento");
+    muestra(q,b,d);
     return aux;
+}
+public static void muestra (double media0, double media1, double media2){
+    
+    System.out.println("Número medio en cola: " + Libreria.darFormato(media0, 5));
+    System.out.println("Utilización del servidor: " + Libreria.darFormato(media1, 5));
+    System.out.println("Demora promedio: " + Libreria.darFormato(media2, 5));
 }
 public static void tiempoEA(Espera e){
     ArrayList<Vta> aux = e.getVTA();

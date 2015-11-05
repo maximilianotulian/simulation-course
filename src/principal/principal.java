@@ -12,44 +12,30 @@ import generadores.Libreria;
  */
 public class principal {
     public static void main(String[] args) {
+ 
+        Espera modelo = new Espera();
 
-        double[] auxMedia;//recibe las medias de los parametros desde el reporte
-        
-        /* inicio primera replica*/
-            Espera modelo = new Espera();
-
-            Inicializacion.Inicia(modelo, 10000);
-            char aux = Tiempos.busca(modelo);
-            while (modelo.getReloj() < modelo.getTFS()) {  
-                if (aux  != 'z') {
-                    switch(aux){
-                        case 'A': {Arribo.funcion(modelo);}
-                            //System.out.println("Arribo: "+ modelo.getReloj());
-                            break;
-                        case 'P': {Partida.funcion(modelo);}
-                           // System.out.println("Partida: " + modelo.getReloj());
-                            break;
-                        default: break;
-                    }
+        Inicializacion.Inicia(modelo, 1000);
+        char aux = Tiempos.busca(modelo);
+        while (modelo.getReloj() < modelo.getTFS()) {  
+            if (aux  != 'z') {
+                switch(aux){
+                    case 'A': {Arribo.funcion(modelo);}
+                        //System.out.println("Arribo: "+ modelo.getReloj());
+                        break;
+                    case 'P': {Partida.funcion(modelo);}
+                       // System.out.println("Partida: " + modelo.getReloj());
+                        break;
+                    default: break;
                 }
-                else{
-                    System.out.println("Error");
-                }
-            modelo.setT(modelo.getReloj());
-            aux = Tiempos.busca(modelo);
             }
-            //agregamos las medias de la réplica
-            auxMedia = Reporte.funcion(modelo);
-            muestra(1,auxMedia[0],auxMedia[1],auxMedia[2]);
-        /* fin primera replica*/
+            else{
+                System.out.println("Error");
+            }
+        modelo.setT(modelo.getReloj());
+        aux = Tiempos.busca(modelo);
+        }
+        //agregamos las medias de la réplica
+        Reporte.funcion(modelo);
     }
-    
-    public static void muestra (int replicas, double media0, double media1, double media2) {
-        
-        System.out.print("--------Media de las "+replicas+" réplicas-------\n");  
-        System.out.println("número medio en cola " + Libreria.darFormato(media0, 5));
-        System.out.println("utilización del servidor " + Libreria.darFormato(media1, 5));
-        System.out.println("demora promedio " + Libreria.darFormato(media2, 5));
-    }
-    
 }
