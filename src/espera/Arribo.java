@@ -3,19 +3,6 @@ package espera;
 import generadores.Libreria;
 
 public class Arribo {
-	/*
-	 * Planificar proximo evento arribo
-	 * if(servidor=ocupado)
-	 * 	Agregar 1 al n�mero de clientes en cola
-	 * 	Almacenar tiempo de arribo de este cliente
-	 * sino
-	 * 	Establecer demora en cero para �ste cliente y acumular estad�sticos
-	 * 	Agregar 1 al n�mero de clientes que completaron su demora
-	 * 	Establecer el servidor como ocupado
-	 * 	Planificar un evento partida para �ste cliente
-         *      9,71
-	 * Volver 
-	 */
     public static void funcion(Espera e){
         if (e.getS() == 'O') {
             double aux = e.getAreaBajoQ() + (e.getReloj() -e.getTUE()) * e.getN();

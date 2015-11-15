@@ -6,15 +6,7 @@ import java.util.ArrayList;
 
 
 public class Reporte {
-/* Calcular los parametros
- * Valor esperado de la demora de un cliente en cola
- * d(n)=sumatoria de Di/n
- * Valor esperado del numero promedio de clientes en cola
- * q(n)=Q(t)/T(n)= Numero de clientes en cola en el tiempo t/Tiempo requerido para observar las n demoras
- * Valor esperado de la utilización del servidor
- * u(n)=B(t)/T(n) B(t)= 1 si el servidor esta ocupado en el tiempo t
- * 0 si el servidor esta desocupado en el tiempo t
- *Mostrar los resultados */
+
 public static double[] funcion(Espera e){
     double[] aux = new double[3];
     

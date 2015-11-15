@@ -34,12 +34,8 @@ public static double Uniforme() {
 	double aux = rnd.nextDouble();
 	//darFormato(aux); nos muestra el n�mero generado con el formato de 4 d�gitos nomas
 	return aux;
-}/*
-public static double Uniforme() {
-	//Nos devuelve un valor uniforme con dos digitos decimales
-Random rnd = new Random(3816L);
-return rnd.nextDouble();
-}*/
+}
+
 private double UniformeRango(int rango,int inicio){
 	Random rnd = new Random();
 	//System.out.println("N�mero aleatorio entre["+inicio+":"+(rango+inicio)+"] : "+(rnd.nextDouble()*rango+inicio));

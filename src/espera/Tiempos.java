@@ -3,10 +3,6 @@ package espera;
 import java.util.ArrayList;
 
 public class Tiempos {
-/* Calcular proximo tiempo de arribo o partida
- * Determinar el proximo tipo de evento
- * Avanzar el relog de la simulaci�n a ese momento
- */
 public static char busca(Espera modelo){
     
     char evento = 'z';
