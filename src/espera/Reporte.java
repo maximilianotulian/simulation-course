@@ -51,10 +51,18 @@ public static double[] funcion(Espera e){
 
     return aux;
 }
-public static void muestra (double media0, double media1, double media2){
-    System.out.println("Número medio en cola: " + Libreria.darFormato(media0, 5));
-    System.out.println("Utilización del servidor: " + Libreria.darFormato(media1, 5));
-    System.out.println("Demora promedio: " + Libreria.darFormato(media2, 5));
+public static double calculaError (double valorExacto, double valorComparar) {
+double aux = (valorExacto > valorComparar) ? (valorExacto - valorComparar) / valorExacto : (valorComparar - valorExacto) / valorExacto ;
+
+return aux;
+}
+public static void muestra (double mediaCola, double mediaUtilizacionServidor, double mediaDemora){
+    double errorCola = calculaError(0.5, mediaCola);
+    double errorUtilizacionServidor = calculaError(0.5, mediaUtilizacionServidor);
+    
+    System.out.println("Número medio en cola: " + Libreria.darFormato(mediaCola, 5) + " Error: " + Libreria.darFormato(errorCola,5));
+    System.out.println("Utilización del servidor: " + Libreria.darFormato(mediaUtilizacionServidor, 5)+ " Error: " + Libreria.darFormato(errorUtilizacionServidor,5));
+    System.out.println("Demora promedio: " + Libreria.darFormato(mediaDemora, 5));
 }
 public static void muestraSeparador() {
     System.out.println("------------------------------------------");
